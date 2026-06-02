@@ -1,0 +1,305 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f1e8;
+}
+
+#app{
+    display:flex;
+    width:100vw;
+    height:100vh;
+}
+
+/* ======================
+   SIDEBAR
+====================== */
+
+#sidebar{
+    width:340px;
+    min-width:340px;
+
+    background:#f4f0e6;
+
+    border-right:2px solid #cfc8bb;
+
+    padding:20px;
+
+    overflow-y:auto;
+
+    z-index:10;
+}
+
+#sidebar h1{
+    font-size:24px;
+    margin-bottom:15px;
+}
+
+#uitlegBtn{
+    width:100%;
+    padding:10px;
+    margin-bottom:20px;
+    cursor:pointer;
+}
+
+#statsPanel{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.stat{
+    display:flex;
+    flex-direction:column;
+    gap:4px;
+}
+
+.stat label{
+    font-size:14px;
+}
+
+.bar{
+    height:18px;
+
+    background:#d7d7d7;
+
+    border-radius:5px;
+
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    width:50%;
+
+    transition:width .4s;
+}
+
+.bio{
+    background:#4caf50;
+}
+
+.gezondheid{
+    background:#00a86b;
+}
+
+.inclusiviteit{
+    background:#6f42c1;
+}
+
+.emissies{
+    background:#666;
+}
+
+.keten{
+    background:#f39c12;
+}
+
+.betaalbaarheid{
+    background:#3498db;
+}
+
+.productie{
+    background:#d35400;
+}
+
+.stat span{
+    font-size:11px;
+    color:#444;
+}
+
+/* ======================
+   PREVIEW
+====================== */
+
+#previewPanel{
+    margin-top:25px;
+}
+
+#previewPanel h2{
+    margin-bottom:10px;
+    font-size:18px;
+}
+
+#groepPreview{
+    height: 140pt;
+
+    border:1px solid #ccc;
+
+    background:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:6px;
+}
+
+#rotatieInfo{
+    margin-top:10px;
+    font-size:12px;
+    color:#666;
+}
+
+/* ======================
+   MELDINGEN
+====================== */
+
+#meldingPanel{
+    margin-top:25px;
+}
+
+#meldingen{
+    min-height:100px;
+
+    border:1px solid #ccc;
+
+    background:white;
+
+    border-radius:6px;
+
+    padding:10px;
+}
+
+/* ======================
+   DEV
+====================== */
+
+#devPanel{
+    margin-top:25px;
+}
+
+#devContent{
+    margin-top:10px;
+}
+
+/* ======================
+   SPEELVELD
+====================== */
+
+#gameArea{
+    position:relative;
+
+    flex:1;
+
+    overflow:hidden;
+}
+
+/* ======================
+   ACHTERGROND
+====================== */
+
+#backgroundLayer{
+    position:absolute;
+
+    inset:0;
+
+    background-image:url("images/Normaal.png");
+    background-size:cover;
+    background-position:center;
+
+    transition:
+        background-image 5s ease,
+        opacity 5s ease;
+
+    z-index:0;
+}
+
+/* ======================
+   BOARD
+====================== */
+
+#boardWrapper{
+    position:relative;
+
+    width:100%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    z-index:2;
+}
+
+#hexBoard{
+    position:relative;
+
+    width:1000px;
+    height:900px;
+    margin-top:220px;
+}
+
+/* ======================
+   HEX
+====================== */
+
+.hex{
+    position:absolute;
+
+     width:80px;
+    height:92px;
+
+    cursor:pointer;
+
+    transition:transform .2s;
+   overflow: hidden;
+}
+
+.hex:hover{
+    transform:scale(1.05);
+}
+
+.hex img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit: cover;
+}
+
+/* ======================
+   LEGE TEGEL
+====================== */
+
+.hex.empty{
+
+    clip-path: polygon(
+    50% 0%,
+    100% 25%,
+    100% 75%,
+    50% 100%,
+    0% 75%,
+    0% 25%
+  );
+
+    background:rgba(214,198,168,.85);
+
+    border:1px solid rgba(120,110,95,.3);
+}
+
+/* ======================
+   CURSOR PREVIEW
+====================== */
+
+#cursorPreview{
+    position:absolute;
+
+    pointer-events:none;
+
+    z-index:50;
+}
+
+.placement-preview{
+    pointer-events:none;
+}
