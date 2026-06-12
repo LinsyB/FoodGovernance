@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voedselsysteem Game</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,93 +18,116 @@
 
     <aside id="sidebar">
 
-         <section id="previewPanel">
+        <div id="fgLogo">
+            <img src="images/logofg.png" alt="Food Governance">
+        </div>
 
-            <h2>Huidige groep</h2>
+        <section id="previewPanel">
 
-            <div id="groepPreview"></div>
 
+            
             <div id="rotatieInfo">
-                ← / → draaien
+                <h2> draai de tegels</h2>
+                <img src="images/pijllinks.png" alt="Pijl knop naar links" width="60px">
+                <img src="images/pijlrechts.png" alt="pijl knop naar rechts" width="60px">
+                 <h2 class="sidebarTitel"></h2>
+                 <div id="groepPreview"></div>
+
             </div>
 
         </section>
 
+        <h3 class="sidebarTitel">
+            Thema's
+        </h3>
 
         <section id="statsPanel">
 
-
-         <div class="stat">
+            <div class="stat emissiesStat">
                 <label>Emissies</label>
+
                 <div class="bar">
                     <div id="emissiesBar" class="fill emissies"></div>
                 </div>
+
                 <span id="emissiesValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat bioStat">
                 <label>Biodiversiteit</label>
+
                 <div class="bar">
                     <div id="bioBar" class="fill bio"></div>
                 </div>
+
                 <span id="bioValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat gezondheidStat">
                 <label>Gezondheid</label>
+
                 <div class="bar">
                     <div id="gezondheidBar" class="fill gezondheid"></div>
                 </div>
+
                 <span id="gezondheidValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat inclusiviteitStat">
                 <label>Inclusiviteit</label>
+
                 <div class="bar">
                     <div id="inclusiviteitBar" class="fill inclusiviteit"></div>
                 </div>
+
                 <span id="inclusiviteitValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat ketenStat">
                 <label>Eerlijke keten</label>
+
                 <div class="bar">
                     <div id="ketenBar" class="fill keten"></div>
                 </div>
+
                 <span id="ketenValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat betaalbaarheidStat">
                 <label>Betaalbaarheid</label>
+
                 <div class="bar">
                     <div id="betaalbaarheidBar" class="fill betaalbaarheid"></div>
                 </div>
+
                 <span id="betaalbaarheidValue">50</span>
             </div>
 
-            <div class="stat">
+            <div class="stat productieStat">
                 <label>Productie</label>
+
                 <div class="bar">
                     <div id="productieBar" class="fill productie"></div>
                 </div>
+
                 <span id="productieValue">50</span>
             </div>
 
         </section>
 
-
-       
+        <a href="prototype.html" id="verderBtn">
+            Verder naar tool →
+        </a>
 
     </aside>
 
     <main id="gameArea">
 
-        <div id="backgroundLayer"></div>
+        <div id="backgroundLayerA" class="backgroundLayer active"></div>
+<div id="backgroundLayerB" class="backgroundLayer"></div>
 
         <div id="boardWrapper">
-
             <div id="hexBoard"></div>
-
         </div>
 
         <div id="cursorPreview"></div>
