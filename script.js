@@ -3001,6 +3001,15 @@ function showRulesScreen()
     document.body.appendChild(overlay);
 }
 
+document
+    .getElementById("rulesBtnFixed")
+    .addEventListener(
+        "click",
+        () => {
+            showRulesScreen();
+        }
+    );
+
 /* =========================
    EINDSCHERM
 ========================= */

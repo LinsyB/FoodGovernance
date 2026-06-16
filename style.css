@@ -467,6 +467,13 @@ body{
     background:rgba(233,228,217,.98);
 }
 
+
+#rulesBtnFixed {
+ color: white;
+ letter-spacing: 2pt;
+ font-weight: lighter;
+}
+
 /* ======================
    CURSOR PREVIEW
 ====================== */
