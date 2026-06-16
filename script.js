@@ -3143,3 +3143,15 @@ function init()
 }
 
 init();
+
+
+window.addEventListener("DOMContentLoaded", () => {
+    const rulesBtnFixed =
+        document.getElementById("rulesBtnFixed");
+
+    if(rulesBtnFixed) {
+        rulesBtnFixed.addEventListener("click", () => {
+            showRulesScreen();
+        });
+    }
+});
