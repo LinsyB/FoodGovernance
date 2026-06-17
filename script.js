@@ -412,7 +412,7 @@ const BASE_TILE_STATS = {
         biodiversiteit: 6,
         gezondheid: 2,
         inclusiviteit: 1,
-        emissiereductie: 3,
+        emissiereductie: 6,
         productie: -1,
         betaalbaarheid: -2
     },
@@ -420,12 +420,11 @@ const BASE_TILE_STATS = {
     Water: {
         biodiversiteit: 2,
         gezondheid: 1,
-        eerlijkeKeten: -1,
         betaalbaarheid: -1
     },
 
     Land: {
-        productie: 4,
+        productie: 2,
         betaalbaarheid: 2,
         emissiereductie: -1,
         biodiversiteit: -1,
@@ -476,7 +475,8 @@ const BASE_TILE_STATS = {
         emissiereductie: 5,
         betaalbaarheid: 2,
         gezondheid: -1,
-        biodiversiteit: -1
+        biodiversiteit: -1,
+        productie: -3
     },
 
     Dorp: {
@@ -629,7 +629,6 @@ function getRandomTile(currentTiles = [])
 {
     const pool = [
         TILES.WEG,
-        TILES.WEG,
 
         TILES.BOOM,
         TILES.BOOM,
@@ -716,6 +715,7 @@ function generateGroup()
     currentRotation = 0;
 
     updateGroupPreview();
+    updateCurrentEffects();
 
     if(hoveredHex)
     {
@@ -725,6 +725,105 @@ function generateGroup()
         );
     }
 }
+
+
+function updateCurrentEffects()
+{
+    let container =
+        document.getElementById("currentEffects");
+
+    if(!container)
+    {
+        container =
+            document.createElement("div");
+
+        container.id =
+            "currentEffects";
+
+        document
+            .getElementById("gameArea")
+            .appendChild(container);
+    }
+
+    container.innerHTML = "";
+
+    if(!currentGroup)
+        return;
+
+    const title =
+        document.createElement("h3");
+
+    title.textContent =
+        "Invloed huidige tegels";
+
+    container.appendChild(title);
+
+    currentGroup.tiles.forEach(
+        tileType =>
+        {
+            const values =
+                BASE_TILE_STATS[tileType];
+
+            if(!values)
+                return;
+
+            const importantValues =
+                Object.entries(values)
+                    .filter(
+    ([stat, value]) =>
+        value >= 2 || value <= -1
+);
+
+            if(importantValues.length === 0)
+                return;
+
+            const tileBlock =
+                document.createElement("div");
+
+            tileBlock.className =
+                "effectTile";
+
+            const name =
+                document.createElement("strong");
+
+            name.textContent =
+                tileType;
+
+            tileBlock.appendChild(name);
+
+            importantValues.forEach(
+                ([stat, value]) =>
+                {
+                    const line =
+                        document.createElement("p");
+
+                    line.textContent =
+                        `${value > 0 ? "+" : "-"} ${formatStatName(stat)}`;
+
+                    tileBlock.appendChild(line);
+                }
+            );
+
+            container.appendChild(tileBlock);
+        }
+    );
+}
+
+function formatStatName(stat)
+{
+    const names = {
+        emissiereductie: "Emissiereductie",
+        biodiversiteit: "Biodiversiteit",
+        gezondheid: "Gezondheid",
+        inclusiviteit: "Inclusiviteit",
+        eerlijkeKeten: "Eerlijke keten",
+        betaalbaarheid: "Betaalbaarheid",
+        productie: "Productie"
+    };
+
+    return names[stat] || stat;
+}
+
 
 /* =========================
    PREVIEW LINKS
@@ -814,6 +913,43 @@ function updateGroupPreview()
    ROTEREN MET PIJLTJES
 ========================= */
 
+function rotateRight()
+{
+    currentRotation =
+        (currentRotation + 1) % 6;
+
+    updateGroupPreview();
+updateCurrentEffects();
+
+if(hoveredHex)
+{
+    showHoverPreview(
+        hoveredHex.q,
+        hoveredHex.r
+    );
+}
+}
+
+function rotateLeft()
+{
+    currentRotation--;
+
+    if(currentRotation < 0)
+    {
+        currentRotation = 5;
+    }
+
+    updateGroupPreview();
+
+    if(hoveredHex)
+    {
+        showHoverPreview(
+            hoveredHex.q,
+            hoveredHex.r
+        );
+    }
+}
+
 document.addEventListener(
     "keydown",
     event =>
@@ -822,40 +958,14 @@ document.addEventListener(
             return;
 
         if(event.key === "ArrowRight")
-        {
-            currentRotation =
-                (currentRotation + 1) % 6;
-
-            updateGroupPreview();
-
-            if(hoveredHex)
-            {
-                showHoverPreview(
-                    hoveredHex.q,
-                    hoveredHex.r
-                );
-            }
-        }
+{
+    rotateRight();
+}
 
         if(event.key === "ArrowLeft")
-        {
-            currentRotation--;
-
-            if(currentRotation < 0)
-            {
-                currentRotation = 5;
-            }
-
-            updateGroupPreview();
-
-            if(hoveredHex)
-            {
-                showHoverPreview(
-                    hoveredHex.q,
-                    hoveredHex.r
-                );
-            }
-        }
+{
+    rotateLeft();
+}
     }
 );
 
@@ -2581,9 +2691,7 @@ function updateBackground()
    MELDINGEN
 ========================= */
 
-/* =========================
-   MELDINGEN
-========================= */
+
 
 const shownMessages = new Set();
 
@@ -3133,6 +3241,8 @@ function init()
 
     generateGroup();
 
+    updateCurrentEffects();
+
     setupBoardClicks();
 
     setupHoverEvents();
@@ -3141,6 +3251,14 @@ function init()
 
     createStartScreen();
 }
+
+document
+    .getElementById("rotateLeft")
+    .addEventListener("click", rotateLeft);
+
+document
+    .getElementById("rotateRight")
+    .addEventListener("click", rotateRight);
 
 init();
 

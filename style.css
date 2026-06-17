@@ -505,6 +505,7 @@ body{
 
 #sidebar::-webkit-scrollbar{
     width:8px;
+ 
 }
 
 #sidebar::-webkit-scrollbar-track{
@@ -512,15 +513,15 @@ body{
 }
 
 #sidebar::-webkit-scrollbar-thumb{
-    background:rgba(255,255,255,.18);
+    background:rgba(255,255,255,.35);
 
     border-radius:999px;
+      
 }
 
 #sidebar::-webkit-scrollbar-thumb:hover{
-    background:rgba(255,255,255,.28);
+    background:rgba(255,255,255,.5);
 }
-
 
 
 /* ======================
@@ -543,7 +544,7 @@ body{
     border-radius:14px;
     background:rgba(0,57,44,.92);
     color:#F7F6F3;
-    font-size:14px;
+    font-size:18px;
     line-height:1.4;
     box-shadow:0 8px 24px rgba(0,0,0,.22);
     opacity:0;
@@ -688,25 +689,23 @@ text-shadow:
 }
 
 .start-button-secondary{
-    border:none;
+    background:#F6F1E8;
 
-    background:transparent;
+    border:2px solid #050505;
+    font-size: medium;
+    font-weight: bold;
 
-    color:#050505;
+    box-shadow:-4px 4px 0 #050505;
 
-    font-size:14px;
-    font-weight:700;
-
-    text-decoration:underline;
-    text-underline-offset:4px;
-
-    opacity:.75;
-
-    padding:4px 8px;
+    transition:.2s ease;
+    padding: 20px;
+    border-radius: 10px;
 }
 
 .start-button-secondary:hover{
-    opacity:1;
+    transform:translateY(-2px);
+
+    box-shadow:-6px 6px 0 #050505;
 }
 /* ======================
    SPELREGELS POPUP
@@ -917,4 +916,75 @@ text-shadow:
     transform:translate(-2px, -2px);
 
     box-shadow:-9px 9px 0 #050505;
+}
+
+#currentEffects{
+    position:absolute;
+    top:250px;   /* iets lager */
+    right:24px;
+
+    width:220px;
+
+    padding:10px 12px;
+
+    background:#F7F6F3;
+
+    border:2px solid #050505;
+    border-radius:14px;
+
+    color:#00392C;
+
+    box-shadow:-4px 4px 0 #050505;
+}
+
+#currentEffects h3{
+    font-size:11px;
+    margin-bottom:8px;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+}
+
+.effectTile{
+    margin-bottom:8px;
+}
+
+.effectTile:last-child{
+    margin-bottom:0;
+}
+
+.effectTile strong{
+    display:block;
+    margin-bottom:3px;
+    font-size:13px;
+}
+
+.effectTile p{
+    font-size:12px;
+    line-height:1.25;
+    margin:1px 0;
+}
+#currentEffects h3{
+    font-size:14px;
+    margin-bottom:10px;
+    text-transform:uppercase;
+}
+
+.effectTile{
+    margin-bottom:12px;
+}
+
+.effectTile:last-child{
+    margin-bottom:0;
+}
+
+.effectTile strong{
+    display:block;
+    margin-bottom:4px;
+    font-size:15px;
+}
+
+.effectTile p{
+    font-size:13px;
+    line-height:1.35;
+    margin:2px 0;
 }
