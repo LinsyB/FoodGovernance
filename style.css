@@ -468,12 +468,6 @@ body{
 }
 
 
-#rulesBtnFixed {
- color: black;
- letter-spacing: 1pt;
- font-weight: lighter;
- padding: 10px;
-}
 
 /* ======================
    CURSOR PREVIEW
@@ -712,6 +706,14 @@ text-shadow:
 /* ======================
    SPELREGELS POPUP
 ====================== */
+
+
+#rulesBtnFixed {
+ color: black;
+ letter-spacing: 1pt;
+ font-weight: lighter;
+ padding: 10px;
+}
 
 
 
