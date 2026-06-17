@@ -469,9 +469,10 @@ body{
 
 
 #rulesBtnFixed {
- color: white;
- letter-spacing: 2pt;
+ color: black;
+ letter-spacing: 1pt;
  font-weight: lighter;
+ padding: 10px;
 }
 
 /* ======================
@@ -707,19 +708,12 @@ text-shadow:
 
     box-shadow:-6px 6px 0 #050505;
 }
+
 /* ======================
    SPELREGELS POPUP
 ====================== */
 
-#rulesOverlay{
-    position:fixed;
-    inset:0;
-    z-index:700;
-    background:rgba(0,0,0,.55);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-}
+
 
 #rulesOverlay{
     position:fixed;
